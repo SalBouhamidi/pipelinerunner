@@ -19,7 +19,7 @@ jobs:
         run: npm install
 
       - name: running tests
-        run : npm run test
+        run : npx cypress run
 
       - name : upload the results
         uses:  actions/upload-artifact@v4
@@ -30,11 +30,11 @@ jobs:
       # - name : download the results file
       #   uses: actions/download-artifact@v4
         
-      - name: upload file to report test api
-        run: |
-          curl -X POST http://localhost:3000/reportingtest/upload \
-            -H "Content-Type: multipart/form-data" \
-            -F "file=@src/report.html" \
+      # - name: upload file to report test api
+      #   run: |
+      #     curl -X POST http://localhost:3000/reportingtest/upload \
+      #       -H "Content-Type: multipart/form-data" \
+      #       -F "file=@src/report.html" \
 
 
         
