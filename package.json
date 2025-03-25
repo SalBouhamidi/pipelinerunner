@@ -81,7 +81,7 @@
       [
         "jest-html-reporter",
         {
-          "outputPath": "report.html",
+          "outputPath": "./src/report.html",
           "includeFailureMsg": true
         }
       ]
