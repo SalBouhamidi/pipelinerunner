@@ -2,9 +2,11 @@ import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { GitService } from 'src/git/git.service';
 
 @Controller('runtest')
 export class RuntestController {
+  constructor(private gitservice : GitService){}
   @Post('upload')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -17,13 +19,14 @@ export class RuntestController {
       }),
     }),
   )
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    try {
+  async uploadFile(@UploadedFile() file: Express.Multer.File){
+    try{
       // console.log("hiho")
-      if (!file) {
+      if(!file){
         throw new Error('no file uploaded');
       }else{
-        
+        let result = await this.gitservice.createBranchAndPushFile(file.path)
+        console.log("weeeee the result is here", result)
       }
 
       // return {
@@ -31,8 +34,8 @@ export class RuntestController {
       //   filename: file.filename,
       //   originalName: file.originalname,
       // };
-    } catch (error) {
-      throw new Error(`Failed to upload file: ${error.message}`);
+    }catch(e){
+      throw new Error(`Failed to upload file: ${e.message}`);
     }
   }
 }
