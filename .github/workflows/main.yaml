@@ -30,7 +30,7 @@ jobs:
       - name : download the results file
         uses: actions/download-artifact@v4
         
-      - name: Upload File
+      - name: upload File
         run: |
           curl -X POST http://localhost:3000/reportingtest/upload \
             -H "Content-Type: multipart/form-data" \
