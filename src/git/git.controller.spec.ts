@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GitController } from './git.controller';
+import { GitService } from './git.service';
 
 describe('GitController', () => {
   let controller: GitController;
@@ -7,6 +8,7 @@ describe('GitController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [GitController],
+      // exports:[GitService]
     }).compile();
 
     controller = module.get<GitController>(GitController);

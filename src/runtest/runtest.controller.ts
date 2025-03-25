@@ -2,7 +2,7 @@ import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { GitService } from 'src/git/git.service';
+import { GitService } from '../git/git.service';
 
 @Controller('runtest')
 export class RuntestController {
