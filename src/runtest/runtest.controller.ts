@@ -28,14 +28,8 @@ export class RuntestController {
         let result = await this.gitservice.createBranchAndPushFile(file.path)
         console.log("weeeee the result is here", result)
       }
-
-      // return {
-      //   message: 'file uploaded successfully',
-      //   filename: file.filename,
-      //   originalName: file.originalname,
-      // };
     }catch(e){
-      throw new Error(`Failed to upload file: ${e.message}`);
+      throw new Error(`failed to upload file: ${e.message}`);
     }
   }
 }

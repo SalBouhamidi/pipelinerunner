@@ -22,7 +22,7 @@ jobs:
         run : npm run test
 
       - name : upload the results
-        uses: ctions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with: 
           name: test-repporting
           path: report.html
