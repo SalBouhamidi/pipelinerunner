@@ -25,7 +25,7 @@ jobs:
         uses:  actions/upload-artifact@v4
         with: 
           name: test-repporting
-          path: cypress/reports/report.html
+          path: cypress/reports/mochawesome_001.html
 
       # - name : download the results file
       #   uses: actions/download-artifact@v4
