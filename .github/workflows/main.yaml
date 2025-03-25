@@ -20,12 +20,18 @@ jobs:
 
       - name: running tests
         run : npm run test
+      - name: Debug Report File
+        run: |
+          find . -name "report.html"
+          ls -lh src/report.html || echo "file not found"
 
       - name : upload the results
         uses:  actions/upload-artifact@v4
         with: 
           name: test-repporting
           path: src/report.html
+      - name: check the contents inside the report
+        run: cat src/report.html || echo "empty"
         # uses :  actions/download-artifact@v4
         
 
