@@ -21,6 +21,13 @@ jobs:
       - name: running tests
         run : npm run test
 
+      - name : upload the results
+        uses: actions/upload-artifact@v3
+        with: 
+          name: test-repporting
+          path: report.html
+
+
 
   
     
