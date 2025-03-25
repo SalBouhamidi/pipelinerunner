@@ -20,7 +20,6 @@ export class ReportingtestController {
     )
     async uploadFile(@UploadedFile() file: Express.Multer.File) {
         try {
-            // console.log("hiho")
             if (!file) {
                 throw new Error('no file uploaded');
             } else {

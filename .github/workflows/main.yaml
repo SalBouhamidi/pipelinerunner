@@ -27,10 +27,10 @@ jobs:
           name: test-repporting
           path: src/report.html
 
-      - name : download the results file
-        uses: actions/download-artifact@v4
+      # - name : download the results file
+      #   uses: actions/download-artifact@v4
         
-      - name: upload File
+      - name: upload file to report test api
         run: |
           curl -X POST http://localhost:3000/reportingtest/upload \
             -H "Content-Type: multipart/form-data" \
