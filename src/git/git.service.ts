@@ -12,6 +12,7 @@ export class GitService {
         `git checkout main`,
         `git checkout -b ${branchName}`,
         `git add ${jsonFilePath}`,
+        `git mv ${jsonFilePath} cypress.env.json`,
         `git commit -m "add test report for ${jsonFilePath}"`,
         `git push -u origin ${branchName}`,
       ];
