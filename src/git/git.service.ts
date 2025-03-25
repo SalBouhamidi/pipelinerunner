@@ -24,7 +24,7 @@ export class GitService {
       return branchName;
     } catch (e) {
       console.error('ops errorrr', e);
-      throw new Error(`Git operation failed: ${e.message}`);
+      throw new Error(`git operation failed ++++: ${e.message}`);
     }
   }
 
