@@ -27,8 +27,16 @@ jobs:
           name: test-repporting
           path: src/report.html
 
+      - name : download the results file
+        uses: actions/download-artifact@v4
+        
+      - name: Upload File
+        run: |
+          curl -X POST http://localhost:3000/reportingtest/upload \
+            -H "Content-Type: multipart/form-data" \
+            -F "file=@src/report.html" \
 
-        # uses :  actions/download-artifact@v4
+
         
 
 
