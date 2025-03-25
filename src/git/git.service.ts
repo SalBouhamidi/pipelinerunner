@@ -4,17 +4,16 @@ import * as path from 'path';
 
 @Injectable()
 export class GitService {
-
   async createBranchAndPushFile(jsonFilePath: string): Promise<string> {
     try {
-      const branchName = `Feature/test/${Date.now()}`;
+      const branchName = `feature/test/${Date.now()}`;
 
       const commands = [
         `git checkout main`,
-        `git checkout -b ${branchName}`, 
-        `git add ${jsonFilePath}`, 
-        `git commit -m "add test report for ${jsonFilePath}"`, 
-        `git push -u origin ${branchName}` 
+        `git checkout -b ${branchName}`,
+        `git add ${jsonFilePath}`,
+        `git commit -m "add test report for ${jsonFilePath}"`,
+        `git push -u origin ${branchName}`,
       ];
 
       for (const cmd of commands) {
@@ -27,7 +26,6 @@ export class GitService {
       throw new Error(`git operation failed ++++: ${e.message}`);
     }
   }
-
 
   private executeCommand(command: string): Promise<string> {
     return new Promise((resolve, reject) => {
