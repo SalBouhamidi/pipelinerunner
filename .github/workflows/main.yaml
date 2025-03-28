@@ -28,6 +28,13 @@ jobs:
           name: test-repporting
           path: cypress/reports/mochawesome_001.html
 
+      - name : delete the branch
+        run: |
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          git checkout main
+          git branch -D $CURRENT_Branch 
+          git push origin -d $CURRENT_BRANCH
+
       # - name : download the results file
       #   uses: actions/download-artifact@v4
 
