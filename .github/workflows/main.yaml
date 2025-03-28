@@ -1,5 +1,9 @@
 name: running test
- 
+
+permissions:
+  contents: write     
+  actions: write
+  checks: write
 
 on:
   push:
