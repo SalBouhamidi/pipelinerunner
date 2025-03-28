@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: running tests
-        run: npx cypress run
+        run: npx cypress run --env filename=$(ls -t uploads/cypress.env.json-* | head -n1 | xargs basename)
 
       - name: upload the results
         uses: actions/upload-artifact@v4
