@@ -27,11 +27,16 @@ jobs:
       - name: running tests
         run: npx cypress run --env filename=$(ls -t uploads/cypress.env.json-* | head -n1 | xargs basename)
 
+      - name: Verify report file
+        run: |
+          ls -la cypress/reports/
+          cat cypress/reports/mochawesome_001.json || echo "Report file not found or empty"
+
       - name: upload the results
         uses: actions/upload-artifact@v4
         with:
           name: test-repporting
-          path: cypress/reports/mochawesome_001.html
+          path: cypress/reports/mochawesome_001.json
 
       - name : delete the branch
         env :
@@ -46,8 +51,8 @@ jobs:
       # - name : download the results file
       #   uses: actions/download-artifact@v4
 
-      - name: upload file to report test api
-        run: |
-          curl -X POST https://7a99-41-140-20-55.ngrok-free.app/reportingtest/upload \
-            -H "Content-Type: multipart/form-data" \
-            -F "file=@src/report.html" \
+      # - name: upload file to report test api
+      #   run: |
+      #     curl -X POST https://7a99-41-140-20-55.ngrok-free.app/reportingtest/upload \
+      #       -H "Content-Type: multipart/form-data" \
+      #       -F "file=@src/report.json" \
