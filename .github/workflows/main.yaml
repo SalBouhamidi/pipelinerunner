@@ -51,8 +51,8 @@ jobs:
       # - name : download the results file
       #   uses: actions/download-artifact@v4
 
-      # - name: upload file to report test api
-      #   run: |
-      #     curl -X POST https://7a99-41-140-20-55.ngrok-free.app/reportingtest/upload \
-      #       -H "Content-Type: multipart/form-data" \
-      #       -F "file=@src/report.json" \
+      - name: upload file to report test api
+        run: |
+          curl -X POST https://7a99-41-140-20-55.ngrok-free.app/reportingtest/upload \
+            -H "Content-Type: multipart/form-data" \
+            -F "file=@src/report.json" \
