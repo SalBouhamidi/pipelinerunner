@@ -31,8 +31,9 @@ jobs:
       - name : delete the branch
         run: |
           CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-          git checkout main
-          git branch -D $CURRENT_Branch 
+          git fetch origin main
+          git checkout origin/main
+          git branch -D $CURRENT_BRANCH 
           git push origin -d $CURRENT_BRANCH
 
       # - name : download the results file
