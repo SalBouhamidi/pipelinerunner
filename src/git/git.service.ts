@@ -6,8 +6,10 @@ import * as path from 'path';
 export class GitService {
   async createBranchAndPushFile(jsonFilePath: string): Promise<string> {
     try {
-      const branchName = `feature/test/${Date.now()}`;
-
+      const gitUserName = await this.executeCommand('git config user.name');
+      const date = new Date();
+      const formattedDate = `${String(date.getDate())}-${String(date.getMonth() + 1)}-${date.getFullYear()}-${String(date.getHours()).padStart(2, '0')}-${String(date.getMinutes()).padStart(2, '0')}`;
+      const branchName = `feature/test/${gitUserName.trim()}-${formattedDate}`;
       const commands = [
         `git checkout main`,
         `git checkout -b ${branchName}`,
